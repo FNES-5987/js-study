@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // for 문 while문 java랑 동일..
+      // labelName : break시 좌표 탈출문
+      // ex)
+      outer: for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+          let input = prompt(`(${i},${j})의 값`, "");
+
+          // 사용자가 아무것도 입력하지 않거나 Cancel 버튼을 누르면 두 반복문 모두를 빠져나옵니다.
+          if (!input) break outer; // (*)
+
+          // 입력받은 값을 가지고 무언가를 함
+        }
+      }
+      alert("완료!");
+    </script>
+  </body>
+</html>

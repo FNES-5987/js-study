@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let userName = "홍길동";
+
+      // 매개변수의 default를 넣으면,
+      // 매개변수의 default값을 매개변수 없이 호출 가능
+      function showMessage(name = userName, text) {
+        // text매개변수에 문자열이 있으면
+        // text 반환
+        // text 문자열이 없으면
+        // '안녕하세요' 반환
+        let msg = text || "안녕하세요";
+        alert(`${name}님, ${msg}`);
+      }
+      showMessage("조정빈");
+      showMessage("최현지");
+      // .
+      // name, text가 모두 indefined인데, name은 기본값
+      showMessage();
+      // 매개변수 2개
+      showMessage("조민우", "빨리 답좀 해주세요");
+    </script>
+  </body>
+</html>

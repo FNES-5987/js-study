@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let a = 0;
+      let b = "abc";
+
+      // // ||(or) : 첫번재 truthy를 반환
+      // // a = falsy, b = truthy
+      // // c <- b (c = b)
+      // const c = a || b;
+      // alert(c);
+
+      // // 단락 평가(short-circuit evalition)
+      // // b가 truthy기 때문에 뒤에있는 a는 평가하지 않음.
+      // const d = b || a;
+      // alert(d);
+
+      // "" || alert("앞에것이 falsy");
+      // getName() || alert("이름값이 없습니다");
+
+      // function getName() {
+      //   return "";
+      // }
+
+      // &&(and)는 첫번째 falsy를 반환
+      // const e = a && b;
+      // alert(e);
+      // // b: truthy , 0: falsy
+      // const f = b && 0 && a;
+      // alert(f);
+
+      // boolen값으로 변환
+      // !값 : 반대 boolen
+      // !!값 : 식 평가와 동일한 boolen
+      // alert(!a);
+      // alert(!!a);
+
+      // 형변환 시
+      // 문자열 반환 : "" + 값
+      // 숫자변환 : +값
+      // 불린 변환 : !!값
+
+      const r = 0 || "" || null || undefined || "abc" || "def";
+      alert(r);
+      // null Or undefined 가 아닌 가장 앞의 값 찾기
+      const r2 = 0 ?? "" ?? null ?? undefined ?? "abc" ?? "def";
+      alert(r2);
+      const a1 = 0;
+      const a2 = "";
+      let a3;
+
+      const r3 = a3 ?? a1 ?? a2;
+    </script>
+  </body>
+</html>
