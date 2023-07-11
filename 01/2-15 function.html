@@ -19,6 +19,12 @@
         let msg = text || "안녕하세요";
         alert(`${name}님, ${msg}`);
       }
+
+      function showCount(count) {
+        // count에 null/undefined 일때만 'unknown'
+        alert(count ?? "unknown");
+      }
+
       showMessage("조정빈");
       showMessage("최현지");
       // .
