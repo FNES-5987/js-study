@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let user = {
+        name: "John",
+        age: 30,
+      };
+
+      let clone = {};
+      for (let prop in user) {
+        // 속성을 생성하면서 대입
+        clone[prop] = user[prop];
+      }
+
+      clone.name = "Pete"; // user.name 은 Jone
+      console.log(user.name);
+
+      let permissions1 = { canView: true };
+      let permissions2 = { canEdit: true };
+
+      // 기존객체에 속성을 복사
+      // Object.assign(대상객체, 소스객체, ...)
+      // 대상객체의 같은 속성이 있으면 덮어씌움
+      Object.assign(user, permissions1, permissions2);
+      console.log(user);
+
+      // 새로운 객체 생성
+      // 대상객체를 반환함
+      const permissionedUser = Object.assign(
+        {},
+        user,
+        permissions1,
+        permissions2
+      );
+      console.log(permissionedUser);
+
+      console.log(user === permissionedUser);
+
+      // ...: sperad operator
+      // 갹채의 모든 속성을 열거를 해주는 연산
+      // {} 객체 생성
+      // {...user} user객체의 속성을 복사해서 객체생성
+      user = { ...user, ...permissions1, ...permissions2, name: "Jo" };
+      console.log(user);
+
+      // user객체 기반으로 신규객체 생성
+      let clone2 = Object.assign({}, user);
+      console.log(clone);
+      let clone3 = { ...user };
+
+      // 객체를 복제, 하위 속성까지 복제
+      // 대신 함수는 복제 안되는 방법
+      // 객체 데이터 값만 잇을때 deepClone 하는 방법
+      // JSON.stringify -> 객체를 문자열로 변환
+      // JSON.parse -> 문자열을 객체로 반환
+      let clnoe4 = JSON.parse(JSON.stringify(user));
+      console.log(JSON.stringify(user));
+    </script>
+  </body>
+</html>
