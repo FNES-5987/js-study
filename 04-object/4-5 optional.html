@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let user = {};
+
+      // error
+      // user(init됨).address(undefined)
+      // 사용자 정보중에
+      // 어떤사람은 주소 정보가 있고, 어떤사람은 없을때
+
+      // alert(user.address.street);
+
+      // user.address -> 첫번째 undefined를 반환
+      // 객체명.속성명?.속성명?.~
+      // 첫번째 undefiend인 속성을 접근
+      console.log(user.address?.street);
+
+      // 이전 줄에서 에러발생 시 다음줄부터는 실행이 안됨.
+    </script>
+  </body>
+</html>
