@@ -35,10 +35,21 @@
       for (let char of "Hello") {
         console.log(char);
       }
-      console.log("-----");
-      for (let char of "Hello") {
-        console.log(prop);
+
+      let users = {
+        kim: {
+          phone: "01000000000",
+        },
+        Jo: {},
+      };
+      users["kim"];
+      users["Jo"];
+      for (let userId in users) {
+        console.log(users[userId]);
       }
+
+      let userArr = [{ phone: "01011111111" }, { phone: "01022222222" }];
+      userArr[0];
     </script>
   </body>
 </html>

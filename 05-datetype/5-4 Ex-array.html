@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let styles = ["Jazz", "Blues"];
+      for (let style of styles) {
+        console.log(style);
+      }
+
+      styles.push("Rock-n-Roll");
+      for (let style of styles) {
+        console.log(style);
+      }
+
+      styles[1] = "Classic";
+      for (let style of styles) {
+        console.log(style);
+      }
+
+      styles.shift();
+      for (let style of styles) {
+        console.log(style);
+      }
+
+      styles.unshift("Rap", "Raggae");
+      for (let style of styles) {
+        console.log(style);
+      }
+
+      function sumInput() {
+        let nums = [];
+
+        while (true) {
+          let input = prompt("숫자를 입력해주세요.");
+          if (input === "" || input === null || !isFinite(input)) break;
+
+          nums.push(+input);
+        }
+
+        let sum = 0;
+        for (let num of nums) {
+          sum += num;
+        }
+        return `입력한 숫자들의 합산 값 : ${sum}`;
+      }
+
+      // alert(sumInput());
+
+      function getMaxSubSum(arr) {
+        let maxSum = 0;
+        let sum = 0;
+        for (let i = 0; i < arr.length; i++) {
+          if (sum + arr[i] > 0) {
+            sum += arr[i];
+            if (sum > maxSum) {
+              maxSum = sum;
+            }
+          } else {
+            sum = 0;
+          }
+        }
+        return maxSum;
+      }
+      console.log(getMaxSubSum([-1, 2, 3, -9])); // 5
+      console.log(getMaxSubSum([2, -1, 2, 3, -9])); // 6
+      console.log(getMaxSubSum([-1, 2, 3, -9, 11])); // 11
+      console.log(getMaxSubSum([-2, -1, 1, 2])); // 3
+      console.log(getMaxSubSum([100, -9, 2, -3, 5])); // 100
+      console.log(getMaxSubSum([1, 2, 3])); // 6
+    </script>
+  </body>
+</html>

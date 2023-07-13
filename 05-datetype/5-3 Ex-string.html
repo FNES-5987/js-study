@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1. 첫글자 대문자로 변경시키기";
+      let name = "john";
+      function ucFirst(name) {
+        return name[0].toUpperCase() + name.slice(1, 4);
+      }
+      console.log(ucFirst(name));
+
+      // 2. 스팸 문자열 걸러내기
+      function checkSpam(str) {
+        let lowerStr = str.toLowerCase();
+        return lowerStr.includes("viagra") || lowerStr.includes("xxx");
+      }
+      console.log(checkSpam("buy ViAgRA now"));
+      console.log(checkSpam("free xxxxx"));
+      console.log(checkSpam("innocent rabbit"));
+
+      // 3. 문자열 줄이기
+      function truncate(str, maxlength) {
+        let strlength = str.length;
+        if (strlength > maxlength) {
+          return str.slice(0, maxlength) + "...";
+        } else return str;
+      }
+      console.log(truncate("What I'd like to tell on this topic is:", 20));
+      console.log(truncate("Hi everyone!", 20));
+
+      // 4. 숫자만 추출하기
+      function extractCurrencyValue(str) {
+        for (let i = 0; i < str.length; i++) {
+          let checkNum = +str.slice(i, i + 1);
+          console.log(checkNum);
+          if (checkNum <= 9) {
+          }
+        }
+      }
+      console.log(extractCurrencyValue("$120"));
+    </script>
+  </body>
+</html>
