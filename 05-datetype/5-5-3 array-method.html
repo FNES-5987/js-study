@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let arr = [1, 2, 15];
+      // sort에 넘기는 함수
+      // 첫번째 매개변수가
+      // 작을 때 음수 반환
+      // 클 때 양수 반환 ->
+      // 정순 정렬
+      arr.sort((a, b) => a - b);
+      console.log(arr);
+
+      let strArr = ["John", "Pete", "Mary"];
+      strArr.sort((a, b) => a.localeCompare(b));
+      console.log(strArr);
+
+      let users = [
+        { id: 1, name: "John" },
+        { id: 2, name: "Pete" },
+        { id: 3, name: "Mary" },
+      ];
+
+      // 이름 기준 정렬
+      // 이름이 사전식으로 앞쪽에 있는것을
+      // 앞쪽으로 정렬 (정순 정렬)
+      // a.name이 b.name보다 앞쪽이면 음수
+      users.sort((a, b) => a.name.localeCompare(b.name));
+      console.log(users);
+
+      let name = "Bilbo, Gandalf, Nazgul";
+      // 구분자로 나눠서 배열을 만듦
+      const nameArr = name.split(",");
+      console.log(nameArr);
+
+      // 배열 요소들 사이에 구분자를 넣어 문자열로 재배열.
+      const joinedStr = nameArr.join("; ");
+      console.log(joinedStr);
+
+      const userNames = users.map((u) => u.name).join(", ");
+      document
+        .querySelector("body")
+        .insertAdjacentHTML("afterbegin", `<div>${userNames}</div`);
+
+      let arrNumbers = [1, 2, 3, 4, 5];
+      // (accumulator, item, index, array) =>
+      // accumulator = 누산기(누적하여 더한 값을 저장함, sum += item)
+
+      const result = arrNumbers.reduce(
+        // 1회 반복 시 sum을 0으로 초기화 num에는 배열 첫번째 값 추가
+        // 0 + 1
+        // n회 반복 시 sum 에는 더한 값 할당 num에는 배열 n번째 값 추가
+        (sum, num) => sum + num,
+        0
+      );
+      console.log(result);
+
+      // arr.some(요소마다 실행할 함수)
+      // 함수의 반환이 true이면
+      // 조건에 맞는  요소가 있음
+      // true이면 찾은 것
+      const res1 = users.some((user) => user.name === "John");
+      const res2 = users.some((user) => user.id > 2);
+    </script>
+  </body>
+</html>

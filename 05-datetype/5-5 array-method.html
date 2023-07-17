@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let arr = ["I", "study", "JavaScript"];
+      // 배열.splice(삭제할시작인덱스, 삭제할요소개수)
+      // 삭제할 요소 개수 없이 인덱스만 넣으면
+      // 해당 인덱스 포함 뒤에있는 모든 요소 삭제
+      arr.splice(1, 1); // 1열부터 1개의 요소를 제거
+      console.log(arr);
+
+      const addArr = ["learn", "Java"];
+      // splice는 삭제한 요소가 반환됨.
+      // 특정 위치에 여러개를 삭제시키고 꺼내오는 용도
+      // arr의 study와 jss를 삭제시키고 없애는것이 아닌 arr2로 이전시켰다고 보면 됨.
+      const arr2 = arr.splice(1, 2, ...addArr);
+      console.log(arr);
+      console.log(arr2);
+
+      const obj = {
+        a: 0,
+        b: 1,
+      };
+
+      const obj2 = { ...obj, c: 2 }; // a:0, b:1, c:2
+
+      // string.slice와 동일
+      // 원래 배열을 그대로두고, 자른것들은 반환배열로
+      const arr3 = arr.slice(0, 2);
+      console.log(arr3);
+
+      // const newArr = sourse.concat([...])
+      const nums = [1, 2];
+      // 배열이 결합은 됐으나 참조배열은 동일하다.
+      nums.splice(nums.length, 0, ...[3, 4]);
+      // console.log(nums);
+
+      // 배열이 결합되면서 새로운 참조배열이 생성
+      // nums가 참조하는 배열은 달라졌다.
+      // nums = nums.concat([3, 4]);
+      // console.log(nums);
+
+      // nums.concat([3, 4])와 동일
+      // nums = [...nums, ...[3, 4]];
+      // const newNums = nums.concat([3, 4]);
+      // console.log(newNums);
+
+      // forEach
+      // arr.forEach: 요소 개수만큼 반복
+      // 배열 index가 필요하다 (for ... in)
+      // 배열 요소만 필요하다 (for ... of)
+      for (let index in arr) {
+        console.log(arr[index]);
+      }
+      for (let elm of arr) {
+        console.log(elm);
+      }
+
+      // ["Bilbo", "Gandalf", "Nazgul"].forEach((item, index, array) => {
+      //   console.log(`${item} is at index ${index} in ${array}`);
+      // });
+
+      const arr5 = [{ val: 1 }, { val: 2 }, { vla: 3 }];
+      // obj -> arr[5]: 참조상태일 때는 indexOf가 됨
+      // obj = {...arr5[0]}: 새로운 객체 indexOf X
+      // const obj = arr[5];
+      const obj5 = arr5[0];
+      console.log(arr5.indexOf(obj5));
+    </script>
+  </body>
+</html>
