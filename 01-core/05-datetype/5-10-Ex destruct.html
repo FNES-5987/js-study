@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let student = {
+        name: "John",
+        age: 20,
+        major: "Computer Science",
+        grades: {
+          math: 90,
+          science: 85,
+          english: 92,
+        },
+      };
+
+      // 1.객체 구조 분해 할당을 사용하여 각 변수 name, age, major에 해당 값을 할당하는 JavaScript 코드를 작성하세요.
+      const [n, a, m] = Object.values(student);
+      console.log(n, a, m);
+
+      // 2.배열 구조 분해 할당을 사용하여 각 변수 math, science, english에 해당 값을 할당하는 JavaScript 코드를 작성하세요.grades
+      let grades = [90, 85, 92];
+      let [math, science, english] = Object.values(grades);
+      console.log(math, science, english);
+
+      // 3.객체 구조 분해 할당을 사용하여 name, age, major는 각각의 변수에, grades는 mathGrade, scienceGrade, englishGrade 변수에 해당 값을 할당하는 JavaScript 코드를 작성하세요. student
+      const [name, age, major] = Object.values(student);
+      const [mathGrade, scienceGrade, englishGrade] = Object.values(grades);
+
+      // 4.배열 구조 분해 할당을 사용하여 name, age, major는 각각의 변수에, 마지막 배열은 math, science, english 변수에 해당 값을 할당하는 JavaScript 코드를 작성하세요.data
+      let data = ["John", 20, "Computer Science", [90, 85, 92]];
+      const [name1, age1, major1, arr] = Object.values(data);
+      console.log(name1, age1, major1);
+      let arr1 = ([math1, science1, english1] = Object.values(arr));
+      console.log(math1, science1, english1);
+    </script>
+  </body>
+</html>
