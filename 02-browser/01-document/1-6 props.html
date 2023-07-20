@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      [data-major="full-stack"] {
+        color: blue;
+      }
+      .order[order-state="new"] {
+        color: green;
+      }
+
+      .order[order-state="pending"] {
+        color: blue;
+      }
+
+      .order[order-state="canceled"] {
+        color: red;
+      }
+    </style>
+  </head>
+  <body id="test" something="non-standard">
+    <ul>
+      <li data-sno="cs-0001">조정빈</li>
+      <li data-sno="fd-0001">최현지</li>
+      <li data-sno="wb-0001">조민우</li>
+    </ul>
+    <div>
+      <div class="order" order-state="new">A new order.</div>
+
+      <div class="order" order-state="pending">A pending order.</div>
+
+      <div class="order" order-state="canceled">A canceled order.</div>
+    </div>
+    <script src="1-6 props.js"></script>
+  </body>
+</html>
