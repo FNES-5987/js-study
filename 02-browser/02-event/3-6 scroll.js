@@ -1,7 +1,20 @@
+// 즉시 실행 함수
+// IIFE(Immediately Invoked Function Expression)
+
+// (function(){}()
+// (()=>{})()
+
+// 1. 이름없이 함수를 생성 후 바로 실행하고자 할 때
+// function func() {...}
+// func()
+// ->
+// (function (){...})()
+
+// 2. 변수나 함수명의 범위를 제한하고자 할 때
 (() => {
   console.log("run");
-let count = 3;
-window.addEventListener("scroll", (e) => {
+  let count = 3;
+  window.addEventListener("scroll", (e) => {
   // 문서의 전체 높이
   console.log(document.body.clientHeight);
   // window.scrollY : 스크롤된 Y축 크기
@@ -29,5 +42,5 @@ window.addEventListener("scroll", (e) => {
     // 어떤 요소에 append
     document.body.append(div);
   }
-});
+  });
 })();
