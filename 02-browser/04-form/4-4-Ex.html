@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>연락처 관리 프로그램</h1>
+    <div>
+      <!-- type=표시될 모양 id=명칭 placeholder=입력값이 없을때 보여주는 택스트 -->
+      <input type="text" id="contactName" placeholder="이름" />
+      <input type="text" id="contactPhone" placeholder="전화번호" />
+      <input type="text" id="contactEmail" placeholder="이메일" />
+      <!-- button onClick=눌러졌을때 실행할 값 -->
+      <button onClick="addContact()">추가</button>
+    </div>
+    <h2>저장된 연락처 리스트:</h2>
+    <ul id="contactList"></ul>
+    <div>
+      <input
+        type="text"
+        id="removeContactName"
+        placeholder="이름을 입력하세요"
+      />
+      <button onClick="removeContact()">삭제</button>
+    </div>
+    <script src="4-4-Ex.js"></script>
+  </body>
+</html>
