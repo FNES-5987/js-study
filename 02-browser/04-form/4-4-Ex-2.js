@@ -16,7 +16,7 @@ function plusContect() {
     document.getElementById("enterEmail").value = "";
 
     showContect();
-  }
+  } else alert("정보를 모두 입력하세요.")
 }
 function showContect() {
   let showContect = document.getElementById("showContect")
