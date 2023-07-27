@@ -1,3 +1,17 @@
+// template: UI형식의 틀
+function createRow(name, phone, email) {
+  // 1. 요소 생성
+  const tr = document.createElement("tr");
+
+  // 2. 요소의 속성 설정
+  tr.dataset.email = email;
+  tr.innerHTML = `
+  <td>${name}</td>
+  <td>${phone}</td>
+  <td>${email}</td>`;
+  return tr;
+}
+
 // 데이터 조회 및 목록 생성
 (async () => {
   const response = await fetch(
@@ -11,15 +25,8 @@
 
   // 배열 반복을 해서 tr만든다음에 tbody 가장 마지막 자식에 추가
   for (let item of result) {
-    const template = /*html*/ `
-    <tr data-email="${item.email}">
-      <td>${item.name}</td>
-      <td>${item.phone}</td>
-      <td>${item.email}</td>
-    </tr>`;
-    tbody.insertAdjacentHTML(
-      "afterbegin",
-      template
+    tbody.append(
+      createRow(item.name, item.phone, item.email)
     );
   }
 })();
@@ -35,8 +42,13 @@
 
   const add = form.querySelector("button");
 
-  add.addEventListener("click", (e) => {
+  add.addEventListener("click", async (e) => {
     e.preventDefault();
+
+    if (email.value === "") {
+      alert("이메일을 입력해주세요.");
+      return;
+    }
 
     if (name.value === "") {
       alert("이름을 입력해주세요.");
@@ -48,23 +60,40 @@
       return;
     }
 
+    // 서버에 데이터를 전송
+    // fetch(url, options)
+    const response = await fetch(
+      "http://localhost:8080/contacts",
+      {
+        // HTTP Method
+        method: "POST",
+        // 보낼 데이터 형식은 json
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email.value,
+          name: name.value,
+          phone: phone.value,
+        }),
+      }
+    );
+    console.log(response);
+
+    const result = await response.json();
+    console.log(result);
+
+    // 화면에 요소를 추가하는 것은 데이처리가 정상적으로 된 다음에
+
+    // --- 3. 어딘가(부모, 다른요소)에 추가한다(append, prepend);
     const tbody = document.querySelector("tbody");
-    const tr = document.createElement("tr");
-    // 삭제할 때 사용하려고 데이터 속성을 추가함
-    tr.dataset.email = email.value;
-
-    tr.innerHTML = `
-    <td>
-      ${name.value}
-    </td>
-    <td>
-      ${phone.value}
-    </td>
-    <td>
-      ${email.value}
-    </td>`;
-
-    tbody.prepend(tr);
+    tbody.prepend(
+      createRow(
+        name.value,
+        phone.value,
+        email.value
+      )
+    );
     form.reset();
   });
 
