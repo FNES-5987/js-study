@@ -1,5 +1,5 @@
 // template: UI형식의 틀
-function createRow(name, phone, email) {
+function createRow(name, phone, email, image) {
   // 1. 요소 생성
   const tr = document.createElement("tr");
 
@@ -8,7 +8,9 @@ function createRow(name, phone, email) {
   tr.innerHTML = `
   <td>${name}</td>
   <td>${phone}</td>
-  <td>${email}</td>`;
+  <td>${email}</td>
+  <td><img src=${image}" alt=${name}"></td>
+  `;
   return tr;
 }
 
@@ -39,6 +41,7 @@ function createRow(name, phone, email) {
   const name = inputs[0];
   const phone = inputs[1];
   const email = inputs[2];
+  const image = inputs[3];
 
   const add = form.querySelector("button");
 
@@ -60,6 +63,16 @@ function createRow(name, phone, email) {
       return;
     }
 
+    const reader = new FileReader();
+    // reader로 파일을 읽기가 완료되면 실행되는 이벤트 핸들러 함수
+    reader.addEventListener("load", (e) => {
+      console.log(e);
+    });
+    // 파일을 dataURL(base64)로 읽음
+    reader.readAsDataURL(file.files[0]);
+
+    // return;
+
     // 서버에 데이터를 전송
     // fetch(url, options)
     const response = await fetch(
@@ -75,6 +88,7 @@ function createRow(name, phone, email) {
           email: email.value,
           name: name.value,
           phone: phone.value,
+          image: image.value,
         }),
       }
     );
@@ -91,7 +105,8 @@ function createRow(name, phone, email) {
       createRow(
         name.value,
         phone.value,
-        email.value
+        email.value,
+        image.value,
       )
     );
     form.reset();
@@ -106,9 +121,17 @@ function createRow(name, phone, email) {
 
   const email = form.querySelector("input");
   const del = form.querySelector("button");
+  console.log(email);
 
-  del.addEventListener("click", (e) => {
+  del.addEventListener("click", async (e) => {
     e.preventDefault();
+
+    // 서버통신
+    await fetch(`http://localhost:8080/contacts/${email.value}`, 
+    {
+      method: "DELETE",
+    })
+
     const tr = document.querySelector(
       `tr[data-email="${email.value}"]`
     );
