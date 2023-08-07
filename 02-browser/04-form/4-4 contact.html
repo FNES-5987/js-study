@@ -11,12 +11,11 @@
     </style>
   </head>
   <body>
-    <h2>연락처 관리 프로그램</h2>
-    <hr />
+    <script src="/todo/auth.js"></script>
     <form action="">
       <label>*이름: <input type="text" /></label>
       <label>*휴대폰: <input type="tel" /></label>
-      <label>이메일: <input type="email" /></label>
+      <label>이메일: <input type="email" style="width: 140px" /></label>
       <br />
       <!-- Mime type -->
       <!-- application/json, image/jpeg, image/png .... -->
@@ -32,6 +31,16 @@
     <form action="">
       <label>이메일: <input type="text" /></label>
       <button>삭제</button>
+    </form>
+    <hr />
+    검색: <br />
+    <form action="">
+      <input placeholder="이름, 전화번호..." />
+      <button>검색</button>
+      <button>초기화</button>
+      &nbsp;&nbsp;&nbsp;
+      <button>이전</button>
+      <button>다음</button>
     </form>
     <script src="4-4 contact.js"></script>
   </body>

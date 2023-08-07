@@ -1,9 +1,7 @@
 function cardTemplate(item) {
   const template = /*html*/ `
-  <div data-no="${
-    item.no
-  }">
-    <em>${item.creatorName}</em>
+  <div data-no="${item.no}">
+    <em>${item.no}</em>
     <hr>
     <h3>${item.title}</h3>
     <p>${item.content}</p>
@@ -11,7 +9,7 @@ function cardTemplate(item) {
     <small>${new Date(
       item.createdTime
     ).toLocaleString()}</small>
-    <button>삭제</button>
+    <button class="btn-remove">삭제</button>
   </div>
 `;
   return template;
@@ -36,8 +34,8 @@ function cardTemplate(item) {
     .sort((a, b) => a.no - b.no)
     // 반복문으로 form뒤에 div를 추가함
     .forEach((item) => {
-      document.forms[1].insertAdjacentHTML(
-        "afterbegin", cardTemplate(item)
+      document.forms[2].insertAdjacentHTML(
+        "afterend", cardTemplate(item)
       );
     });
 })();
@@ -75,31 +73,57 @@ function cardTemplate(item) {
     console.log(result);
 
     // UI 생성
-    document.forms[1].insertAdjacentHTML(
-      "afterbegin",
+    document.forms[2].insertAdjacentHTML(
+      "afterend",
       cardTemplate(result.data)
     );
   });
 })();
 
+// 삭제
 (()=>{
 
   const form = document.forms[1];
-  console.log(form);
-  // div 불러내기
 
-  // const button = div.querySelector("button")
+  const input = form.querySelector("input")
+  console.log(input);
+  const del = form.querySelector("button");
 
-  // button.addEventListener("click", async (e) => {
-  //   e.preventDefault();
+  del.addEventListener("click", async (e) => {
+    e.preventDefault();
 
-  //   await fetch(`http://localhost:8080/contacts/${}`,
-  //   {
-  //     method: "DELETE",
-  //   })
+    await fetch(`http://localhost:8080/posts/${input.value}`,
+    {
+      method: "DELETE",
+    })
 
-  //   .remove();
+    const div = document.querySelector(
+      `div[data-no="${input.value}"]`
+    );
 
-  //   form.reset();
-  // })
-})()
+    if (!div) {
+      alert("해당번호가없습니다.")
+      return;
+    }
+
+    div.remove();
+
+    form.reset();
+  })
+})();
+
+(() => {
+  document.body.addEventListener("click", (e) => { 
+    // alert(e.target.className);
+    // e.target: 실제 이벤트가 발생한요소
+    // 해당 클래스가 있는지 확인
+    if (
+      e.target.classList.contains("btn-remove")
+    ) {
+      // jsdoc type 힌트를 넣어줌
+      /** @type {HTMLButtonElement} */
+      const removeBtn = e.target;
+      removeBtn.parentElement.remove();
+    }
+  });
+})();
